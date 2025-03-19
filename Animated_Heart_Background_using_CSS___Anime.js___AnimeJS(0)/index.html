@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+         <div class="container">
+            <div class="heart"></div>
+        </div>
+        
+        <script src="anime.min.js"></script>
+        <script>
+            const container =document.querySelector('.container');
+            for(var i=1;i<=100;i++){
+                const hearts = document.createElement('div');
+                hearts.classList.add('heart');
+                container.appendChild(hearts);
+            }
+            function animateHeart(){
+                anime({
+                    targets: '.heart',
+                    translateX: function(){
+                        return anime.random(-700,700);
+                    },
+                    translateY: function(){
+                        return anime.random(-500,500);
+                    },
+                    rotate: 45,
+                    scale: function(){
+                        return anime.random(1,5);
+                    },
+                    easing: 'easeInOutBack',
+                    duration: 3000,
+                    delay: anime.stagger(10),
+                    complete: animateHeart
+                })
+            }
+            
+            
+            animateHeart()
+        </script>
+    </body>
+</html>
